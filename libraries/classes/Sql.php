@@ -2062,7 +2062,7 @@ class Sql
         }
 
         $GLOBALS['reload'] = $this->hasCurrentDbChanged($db);
-        $GLOBALS['dbi']->selectDb($db);
+            $GLOBALS['dbi']->selectDb($db);
 
         [
             $result,

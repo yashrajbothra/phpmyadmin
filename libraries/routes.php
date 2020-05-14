@@ -111,6 +111,7 @@ return function (RouteCollector $routes) {
         $routes->post('/list-columns', [AjaxController::class, 'columns']);
         $routes->post('/config-get', [AjaxController::class, 'getConfig']);
         $routes->post('/config-set', [AjaxController::class, 'setConfig']);
+        $routes->post('/defaultFuncs', [AjaxController::class, 'getDefaultFuncs']);
     });
     $routes->addRoute(['GET', 'POST'], '/browse-foreigners', [BrowseForeignersController::class, 'index']);
     $routes->get('/changelog', [ChangeLogController::class, 'index']);

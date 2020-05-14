@@ -99,4 +99,15 @@ class AjaxController extends AbstractController
         $this->response->setRequestStatus(false);
         $this->response->addJSON(['message' => $result]);
     }
+
+    public function getDefaultFuncs(): void
+    {
+        if (! isset($_POST['type'])) {
+            $this->response->setRequestStatus(false);
+            $this->response->addJSON(['message' => Message::error()]);
+            return;
+        }
+
+        $this->response->addJSON(['default_functions' => $this->dbi->types->getFunctions($_POST['type'])]);
+    }
 }

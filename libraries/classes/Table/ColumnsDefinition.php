@@ -133,7 +133,7 @@ final class ColumnsDefinition
             $regenerate = 1;
         }
 
-        $foreigners = $relation->getForeigners($db, $table, '', 'foreign');
+         $foreigners = $relation->getForeigners($db, $table, '', 'foreign');
         $child_references = null;
         // From MySQL 5.6.6 onwards columns with foreign keys can be renamed.
         // Hence, no need to get child references
@@ -436,6 +436,7 @@ final class ColumnsDefinition
 
             $default_value = '';
             $type_upper = mb_strtoupper($type);
+            $default_function = $GLOBALS['dbi']->types->getFunctions($type_upper);
 
             // For a TIMESTAMP, do not show the string "CURRENT_TIMESTAMP" as a default value
             if (isset($columnMeta['DefaultValue'])) {
@@ -452,6 +453,7 @@ final class ColumnsDefinition
                 'column_meta' => $columnMeta,
                 'type_upper' => $type_upper,
                 'default_value' => $default_value,
+                'default_function' => $default_function,
                 'length_values_input_size' => $length_values_input_size,
                 'length' => $length,
                 'extracted_columnspec' => $extracted_columnspec,
